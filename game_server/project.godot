@@ -10,13 +10,9 @@ config_version=4
 
 [application]
 
-config/name="Game Client"
-run/main_scene="res://Scenes/Main/Ninja.tscn"
+config/name="Game Server"
+run/main_scene="res://Scenes/Main/Server.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-Server="*res://Scenes/Singletons/Server.gd"
 
 [gui]
 
