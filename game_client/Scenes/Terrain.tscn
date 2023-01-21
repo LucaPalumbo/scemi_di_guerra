@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Textures/map_1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Terrain.gd" type="Script" id=2]
+
+[node name="Terrain" type="Node2D"]
+
+[node name="CollisionHandler" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionHandler"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
