@@ -11,3 +11,5 @@ scale = Vector2( 0.1, 0.1 )
 
 [node name="Terrain" parent="." instance=ExtResource( 2 )]
 position = Vector2( 5, 4 )
+
+[node name="CannonBalls" type="Node2D" parent="."]

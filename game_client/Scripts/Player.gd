@@ -1,8 +1,11 @@
 extends KinematicBody2D
 
+export (PackedScene) var cannonBall = preload("res://Scenes/Main/SimpleBullet.tscn")
+
 const GRAVITY = 4000
 export (int) var speed = 100
 var velocity = Vector2()
+onready var cannonBalls = get_parent().get_node("CannonBalls")
 
 
 func _ready():
@@ -16,6 +19,9 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_action_pressed("mouse_click"):
+		var ball = cannonBall.instance()
+		ball.global_position = $Position2D.global_position
+		cannonBalls.add_child(ball)
 		print("shoot")
 
 func get_input():
