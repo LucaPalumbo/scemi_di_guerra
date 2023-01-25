@@ -4,12 +4,7 @@ var network = NetworkedMultiplayerENet.new()
 var port = 1909
 var max_player = 100
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	StartServer()
 	
@@ -30,6 +25,8 @@ func Peer_Disconnected(player_id):
 	print("User "+str(player_id)+" Disconnected")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+remote func FetchMessage(message, requester):
+	var player_id = get_tree().get_rpc_sender_id()
+	var m = ServerData.data[message]
+	rpc_id(player_id, "ReturnMessage", m, requester)
+	print("Sent " + str(m) + " to " + str(player_id) )

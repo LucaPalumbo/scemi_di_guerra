@@ -9,20 +9,23 @@ onready var cannonBalls = get_parent().get_node("CannonBalls")
 
 
 func _ready():
-	pass # Replace with function body.
+	pass 
 
 func _physics_process(delta):
 	get_input()
 	velocity.y += delta * GRAVITY
 	velocity = move_and_slide(velocity)
-
+ 
 
 func _input(event):
 	if event.is_action_pressed("mouse_click"):
 		var ball = cannonBall.instance()
 		ball.global_position = $Position2D.global_position
 		cannonBalls.add_child(ball)
+		ball.linear_velocity = Vector2(0,-200)
 		print("shoot")
+		
+		testConnection()
 
 func get_input():
 	velocity = Vector2()
@@ -33,6 +36,10 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func testConnection():
+	print("Eserguendo test connection")
+	Server.FetchMessage("message", get_instance_id() )
+
+func testConnection2(message):
+	print("Arrived: " + message)
